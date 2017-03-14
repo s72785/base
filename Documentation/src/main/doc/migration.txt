@@ -4,7 +4,7 @@ The migration tools for Digital Objects provide extraction and insertion of Digi
 to move Digital Objects between two or more KIT-DM repository instances. 
 
 The Utils module (maven module) contains the migration code. The class `CreateMigrationObject` and 
-`MigrateObject` extract and insert a migration object (class `MirgrationObject`) as an xml file to 
+`MigrateObject` extract and insert a migration object (class `MigrationObject`) as an xml file to
 the given path. Currently it is hard coded. 
 
 The state of the metadata migration is depicted in the following table.

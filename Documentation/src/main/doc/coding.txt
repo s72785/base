@@ -15,7 +15,7 @@ The typical access to KIT Data Manager services for basic (remote) use cases is 
 |User-Group Management Service|Service for adding groups, assigning users to groups and getting information about existing users and groups.
 |BaseMetaData Service|Access to Base Metadata (Study, Investigation and DigitalObject) for registering and reading new metadata entities.
 |Staging Service|Service for initiating data transfers task to and from KIT Data Manager. This service does not take care of the actual transfer!
-|DataOrganization Service|Access to the DataOrganization of Digital Objects as soon as it is extractred during ingest.
+|DataOrganization Service|Access to the DataOrganization of Digital Objects as soon as it is extracted during ingest.
 |Sharing Service|Obtaining and changing access permissions for secured resources (e.g. Study, Investigation, Digital Object).
 |Data Workflow Service|Apply processing tasks or workflows to Digital Objects in the repository system.
 |Audit Service|Query and create audit events.
@@ -58,7 +58,7 @@ The implementation classes and default service base URLs are shown in the follow
 |================================================================================================================================================
 
 [NOTE]
-You'll find some of the following and other examples withint the code base of KIT Data Manager in the link:https://github.com/kit-data-manager/base/tree/master/Samples[Samples module]
+You'll find some of the following and other examples within the code base of KIT Data Manager in the link:https://github.com/kit-data-manager/base/tree/master/Samples[Samples module]
 
 In Java, the access to the different services looks quite similar. The following example shows how to create the BasicMetadata structure for a new Digital Object:
 
@@ -211,7 +211,7 @@ Finally, there are four methods for the actual execution. Two of them are for pr
 The two other methods are for post-transfer operations which are executed after the ingest into the repository storage has finished (see <<ChapterStaging,Staging>>). The main difference between pre- and post-transfer 
 processing is, that pre-transfer processing is only available for ingests and is executed directly before the digital object has been ingested into the repository system. Therefor, there is no data organization information 
 available, yet. However, during pre-transfer processing  validation of the uploaded data and metadata extraction may take place as pre-transfer processing is allowed to fail. In contrast, post-transfer processing is executed 
-after the digital object has been integested into the repository system. Therefore, post-transfer processing should not fail as the content is already ingested.
+after the digital object has been ingested into the repository system. Therefore, post-transfer processing should not fail as the content is already ingested.
 
 The first method `perform<Pre|Post>Processing(TransferTaskContainer pContainer)` is responsible for the actual execution of the processor in the according phase. The provided `TransferTaskContainer` contains all
 information available for the transfer itself as well as information about uploaded data. The data belonging to a single transfer is organized in a well-defined tree structure described in 
@@ -289,7 +289,7 @@ restart using the administration user interface.
 
 Server-sided Development
 ~~~~~~~~~~~~~~~~~~~~~~~~
-The final part of this chapter covers the delevopment on the server-side. For local, high-performance access to KIT Data Manager services, 
+The final part of this chapter covers the development on the server-side. For local, high-performance access to KIT Data Manager services,
 e.g. for implementing modern Web applications for repository access, there are plenty of Java APIs providing much more flexibility than the general REST interfaces. 
 For each high level service there is an according local implementation as listed in the following table:
 
@@ -308,7 +308,7 @@ All these service implementations are realized as singletons, their use is descr
 
 Querying for Metadata
 ^^^^^^^^^^^^^^^^^^^^^
-As decribed in chapter <<ChapterMetadataManagement,Metadata Management>>, there are three different kinds of metadata which can be accessed in different ways. The access to
+As described in chapter <<ChapterMetadataManagement,Metadata Management>>, there are three different kinds of metadata which can be accessed in different ways. The access to
 `Content Metadata` is done via special interfaces according to the system the Content Metadata is published to, which won't be described here. The other two kinds of metadata are 
 accessible via the integrated MetaDataManagement Service of KIT Data Manager. Basically, these functionalities are roughly oriented towards the Java Persistence API (JPA) 
 standard and are defined in the interface `edu.kit.dama.mdm.IMetaDataManager`. Please refer to the JavaDoc of this interface for a detailed description of each method. 
@@ -386,9 +386,9 @@ used for the resulting query applying the following mappings:
 [cols="m,n", options="header"]
 |============================================================================================================================
 |Attribute value provided in ... |Resulting Query
-|Left Sample| ... WHERE attribute >= LeftSample.attibuteValue ...
-|Right Sample|... WHERE attribute <= RightSample.attibuteValue ...
-|Both Samples|... WHERE attribute BETWEEN LeftSample.attributeValue AND RightSample.attibuteValue ...
+|Left Sample| ... WHERE attribute >= LeftSample.attributeValue ...
+|Right Sample|... WHERE attribute <= RightSample.attributeValue ...
+|Both Samples|... WHERE attribute BETWEEN LeftSample.attributeValue AND RightSample.attributeValue ...
 |============================================================================================================================
 
 If multiple attributes are set, all resulting conditions are concatenated and may result in complex queries that are hard to handle. 
@@ -413,7 +413,7 @@ an UnauthorizedAccessAttemptException will be thrown if the caller is not allowe
 The second query will return a list as long as no UnauthorizedAccessAttemptException is produced. If no result was found, the list is empty. Otherwise, the list contains 
 all accessible DigitalObjects whose DigitalObjectIdentifier contains +efgh+. 
 
-Querying for entities using the beforementioned methods is easy but is limited and will load the entire object tree! 
+Querying for entities using the methods mentioned before is easy but limited and will load the entire object tree!
 There are many different opportunities to reduce the amount of returned data and to speed up queries. Some of them are presented next: 
 
 [source,java]
@@ -607,7 +607,7 @@ plugin configuration to your `pom.xml`:
     <configuration>
     <source>1.7</source>
     <target>1.7</target>
-    <!--Custom annotation processor for parsing classes for securable resource annotations.--> 
+    <!--Custom annotation processor for parsing classes for securable resource annotations.-->
     <annotationProcessors>
       <annotationProcessor>
           edu.kit.dama.authorization.annotations.SecurableResourceIdFieldProcessor
@@ -620,7 +620,7 @@ plugin configuration to your `pom.xml`:
 </plugin>
 --------------------------------------
 
-The two annotation processors will check the annotations in your project based on the criterias mentioned before and can help you to detect misconfiguration easily.
+The two annotation processors will check the annotations in your project based on the criteria mentioned before and can help you to detect misconfiguration easily.
 The final part necessary for implementing `ISecurableResource` is the implementation of the method `getSecurableResourceId()`. This method has to return an instance of `SecurableResourceId` 
 containing the `domainName` (the one we've used in the annotation above) as well as the content of the field `uniqueIdentifier`. The value of this field should be set during the initial creation of the 
 object and should *never change*.

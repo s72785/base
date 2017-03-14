@@ -48,7 +48,9 @@ Reading state information...
 rabbitmq-server is already the newest version.
 user@localhost:/home/user$
 --------------------------------------
-As elasticsearch is not available via a software repository it has to be downloaded
+If Elasticsearch is not available via a
+https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html[software repository]
+it has to be downloaded
 and configured first.
 
 Elasticsearch
@@ -80,7 +82,7 @@ Look for the corresponding line remove the leading # and change the value:
 cluster.name: KITDataManager@`hostname`
 
 
-Set `hostname` to the hostname of the host running elasticsearch or to another, unique value and keep the value of 'cluster.name' for later use.
+Set `hostname` to the hostname of the host running Elasticsearch or to another, unique value and keep the value of 'cluster.name' for later use.
 
 *Step 4:* Configure Elasticsearch as daemon and start service
 [source,sh]
@@ -93,7 +95,7 @@ That's it. Now continue setting up KIT Data Manager to index metadata to Elastic
 
 [IMPORTANT]
 In the newest version (5.0.0) the ports (9200 and 9300) for accessing Elasticsearch 
-are only accessible from localhost. Dowever, everyone who is able to access Elasticsearch 
+are only accessible from localhost. However, everyone who is able to access Elasticsearch
 has all privileges, e.g. also deleting the index. For production environments further security measures are recommended.
 
 External Links
@@ -276,7 +278,7 @@ ORCiD Login and Registration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Since KIT Data Manager 1.4 user registration and login via ORCiD is supported. In order to enable ORCiD service access a couple of working steps are required. First, please go to  
-link:https://orcid.org[ORCiD.org] and enable public API access for your account. You should be able to find it unter 'For Researchers" -> 'Developer Tools'. Provide application name, e.g. MyRepository, your website URL, 
+link:https://orcid.org[ORCiD.org] and enable public API access for your account. You should be able to find it under 'For Researchers" -> 'Developer Tools'. Provide application name, e.g. MyRepository, your website URL,
 e.g. http://myinstitution.org, a short description of your application and at least one redirect URI, which is the base URL of your KIT Data Manager instance, e.g. https://myhost:8080/KITDM You may also provide multiple redirect
 URIs later in order to support other applications, too. 
 
@@ -307,7 +309,7 @@ all options, sample values and a short description.
 |============================================================================================================================
 
 [NOTE]
-Please refer to the inline documentation or the <<SectionRESTBasedDownload,according section>> in the architecture decription for details.
+Please refer to the inline documentation or the <<SectionRESTBasedDownload,according section>> in the architecture description for details.
 
 The following snippet shows the according configuration section in the KIT Data Manager's web.xml. 
 
@@ -385,7 +387,7 @@ Add a custom AdalapiProtocolConfiguration::
 [NOTE]
 Please note that authenticatorclass and protocol class contain spaces in order to improve the readability of both values. Please remove the spaces when adding the values to the database.
 
-For the time being the only two ways to add a new `AdalapiProtocolConfiguration` is manually adding a table row via SQL statement or programatically adding an entry via Java APIs. 
+For the time being the only two ways to add a new `AdalapiProtocolConfiguration` is manually adding a table row via SQL statement or programmatically adding an entry via Java APIs.
 Furthermore, the exact values as shown above must be used. The only fields that change are the `id`, which has to be unique, and the `identifier` which also has to be unique and must be generated based on the URL that should be accessed. 
 For manually adding a configuration via SQL statement, the following table shows some examples of identifiers for specific URLs: 
 
@@ -512,7 +514,7 @@ Please refer to the following section for all changes, whether applying them is 
 [cols="1,1,6,2", options="header"]
 |============================================================================================================================
 |Type|Optional|Todo|Side Effects
-|image:data.png[DatabaseUpdate]|No|Apply script `sql/update.1.0-1.1.sql`|All ingest- and downloadinformation entries are deleted. Therefor, it is recommended to finish all data transfers before updating.
+|image:data.png[DatabaseUpdate]|No|Apply script `sql/update.1.0-1.1.sql`|All entries on ingest and download information are deleted. Therefor, it is recommended to finish all data transfers before updating.
 |image:gear_preferences.png[ConfigurationUpdate]|Yes|Add nodes for *maxIngestLifetime* and *maxDownloadLifetime* to *staging* section 
 in `$KITDM_LOCATION/KITDM/WEB-INF/classes/datamanager.xml` The default value is 604800 (seconds per week).|None.
 |============================================================================================================================
@@ -522,12 +524,12 @@ in `$KITDM_LOCATION/KITDM/WEB-INF/classes/datamanager.xml` The default value is 
 [cols="1,1,6,2", options="header"]
 |============================================================================================================================
 |Type|Optional|Todo|Side Effects
-|image:data.png[DatabaseUpdate]|No|Apply script `sql/update.1.1-1.2.sql`|This script adds the Quartz scheduler related tables to the database. Furthermore, a typo was fixed and an additional column to the table 'ExecutionEnvironmentConfiguration' was introduced. As the worklflow service was not publicly available before version 1.2 this table should not exists, yet. Therefor, error related to changing this table can be safely ignored.
+|image:data.png[DatabaseUpdate]|No|Apply script `sql/update.1.1-1.2.sql`|This script adds the Quartz scheduler related tables to the database. Furthermore, a typo was fixed and an additional column to the table 'ExecutionEnvironmentConfiguration' was introduced. As the workflow service was not publicly available before version 1.2 this table should not exists, yet. Therefor, error related to changing this table can be safely ignored.
 |image:gear_preferences.png[ConfigurationUpdate]|No|Add a new section *scheduler* containing setting for the internal scheduler feature.|None.
 |image:gear_preferences.png[ConfigurationUpdate]|No|Update entity list in persistence.xml, persistence unit MDM-Core according to the list below. |None.
 |============================================================================================================================
 
-Additional section that has to be added to datamanger.xml in order to configure the Quartz scheduler. The values of the job store have to be changed according to your local configuration:
+Additional section that has to be added to datamanager.xml in order to configure the Quartz scheduler. The values of the job store have to be changed according to your local configuration:
 
 [source, xml]
 --------------------------------------
@@ -610,7 +612,7 @@ Current list of entities (KIT DM 1.2) that has to be registered in the persisten
 |image:gear_preferences.png[ConfigurationUpdate]|No|Update entity list in persistence.xml, persistence unit MDM-Core according to the list below. |None.
 |============================================================================================================================
 
-Additional section that has to be added to datamanger.xml in order to configure the transition type handler of the metadata management:
+Additional section that has to be added to datamanager.xml in order to configure the transition type handler of the metadata management:
 
 [source, xml]
 --------------------------------------
@@ -717,7 +719,7 @@ Due to a huge number of changes in the structure of 'datamanager.xml' it is reco
 SimpleMonitoring-related settings.
 -->
 <simon>
-	<!--The path where the configuration files for the SimpleMonitoring are located. Please replace $KITDM_LOCATION by the absolut path of your KIT Data Manager installation.-->
+	<!--The path where the configuration files for the SimpleMonitoring are located. Please replace $KITDM_LOCATION by the absolute path of your KIT Data Manager installation.-->
 	<configLocation>${simon.config.location}</configLocation>
 </simon>
 <!--
@@ -800,7 +802,7 @@ MetaDataManagement-related settings.
             <downloadInformationServiceAdapter class="edu.kit.dama.staging.adapters.DefaultDownloadInformationServiceAdapter" target="LOCAL"/>
             <storageVirtualizationAdapter class="edu.kit.dama.staging.adapters.DefaultStorageVirtualizationAdapter" target="LOCAL">
                 <!--The Url where the managed repository storage (archive) is located. All data ingested into the repository system will be located here.
-                Currently, the DefaultStorageVirtualizationAdapter only supports locally accessible Urls. However, this can be remote storages mounted
+                Currently, the DefaultStorageVirtualizationAdapter only supports locally accessible Urls. However, this can be mounted (multiple) remote storage
                 into the local filesystem. Please replace $ARCHIVE_STORAGE by the absolute path of your archive location, e.g. file:///mnt/archive/
                 Attention: Please pay attention to provide three (!) slashes. Otherwise, all data transfer services of KIT Data Manager won't work.
                 -->
@@ -823,7 +825,7 @@ MetaDataManagement-related settings.
         </remoteAccess>
         <!--The max. number of single files that is transferred in parallel to/from the archive location to access point locations. 
     This number refers to one single staging operation (ingest/download). If there are two staging operations running in parallel, 
-        two times 'maxParallelTransfers' are used.-->  
+        two times 'maxParallelTransfers' are used.-->
         <maxParallelTransfers>10</maxParallelTransfers>
         <!--The max. number of simultaneous ingest/download operations. This setting is used by the TransferFinalizer tool. The tool itself 
         handles one ingest/download per execution. However, by running the TransferFinalizer as Cron job multiple instances may run in 

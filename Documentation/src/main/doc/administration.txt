@@ -137,13 +137,14 @@ user groups it allows the configuration other configurable elements:
 [WARNING]
 The menu item image:Settings_Button.png[Settings_Button, width="30"] is visible only if your current role is either MANAGER or ADMINISTRATOR. 
 The role is defined per group. By default, after logging in at the AdminUI, your active group is 'USERS'. To change the active group 
-use the combobox in the upper right corner of the AdminUI. Next to the selection box you can also find you current role.
+use the combo box in the upper right corner of the AdminUI. Next to the selection box you can also find you current role.
 
 [[ChapterUserAdministration]]
 User Administration
 ^^^^^^^^^^^^^^^^^^^
 
 The set of functionalities offered by the user-administration-tab depends on your current role. There are the following possibilities:
+
 
 `MANAGER`:: If you are manager you are allowed to see user information. You are also allowed to change basic information, 
 e.g. first and last name and validation period, of yourself and to see your and other group memberships. Furthermore, you are allowed to 
@@ -170,9 +171,9 @@ or the group membership was withdrawn.
 image::screenshots/MembershipsView.png[MembershipsView,width="400px", align="center"]
 
 In order to change the membership in a specific group select the group in the table, chose the new 
-role in the combobox next to the table and click 'Apply New Role'. If the update suceeds, the role is
+role in the combo box next to the table and click 'Apply New Role'. If the update succeeds, the role is
 updated in the table and committed to the database. In case of an error, e.g. if you have insufficient permissions,
-an exclamation mark will appear in the info colum. For details please hover over the exclamation mark.
+an exclamation mark will appear in the info column. For details please hover over the exclamation mark.
 
 [[ChapterFilterSetter]]
 Filter Setter
@@ -269,7 +270,7 @@ all remaining properties and confirm them by clicking the button `Commit Changes
 '''
 
 [WARNING]
-Newly created access points are automatically disabled for security reasons. Enable them by unselecting the check box `Disabled`.
+Newly created access points are automatically disabled for security reasons. Enable them by deselecting the check box `Disabled`.
 
 '''
 --
@@ -355,7 +356,7 @@ all remaining properties and confirm them by clicking the button `Commit Changes
 '''
 
 [WARNING]
-Newly created staging processors are automatically disabled for security reasons. Enable them by unselecting the check box `Disabled`.
+Newly created staging processors are automatically disabled for security reasons. Enable them by deselecting the check box `Disabled`.
 
 '''
 --
@@ -378,7 +379,7 @@ is based
 
 image:ImplementationClass_Button.png[ImplementationClass_Button]:: Button for
 creating a staging processor with the implementation class declared in the text 
-fiel `PROCESSOR_IMPLEMENTATION_CLASS`
+field `PROCESSOR_IMPLEMENTATION_CLASS`
 
 `PROCESSOR_NAME`:: Text field displaying the name of the selected staging processor 
 footnoteref:[nProcessorSelection]
@@ -456,9 +457,9 @@ class on which the selected execution environment is based.
 
 image:ImplementationClass_Button.png[ImplementationClass_Button]:: Button for
 creating an execution environment with the implementation class declared in the text 
-fiel `JOB_IMPLEMENTATION_CLASS`
+field `JOB_IMPLEMENTATION_CLASS`
 
-`ACCESS_POINT`:: Combobox allowing to select the access point that can be used to stage data in and out the execution environment.
+`ACCESS_POINT`:: Combo box allowing to select the access point that can be used to stage data in and out the execution environment.
 
 `ACCESS_POINT_BASE_PATH`:: Text field displaying the base path at which the access point is available within the execution environment.
 
@@ -568,7 +569,7 @@ add button next to the trigger table. In the popup which opens there are four di
 |'Now' Trigger|Triggers a immediate, single-time job execution. After the execution, the trigger is removed again.
 |'At' Trigger|Triggers a single-time job execution at a specific time. After the execution, the trigger is removed again.
 |'Expression' Trigger|Triggers a repeated job execution specified in a Cron-like syntax.
-|'Interval' Trigger|Triggers a repreated job execution in a specific interval in seconds and with an optional number of times.
+|'Interval' Trigger|Triggers a repeated job execution in a specific interval in seconds and with an optional number of times.
 |============================================================================================================================
 
 For typical use cases it is recommended to use either 'Expression' or 'Interval' triggers as they typically run as long as they are not removed manually.
@@ -601,7 +602,7 @@ class on which the selected job schedule is based.
 
 image:ImplementationClass_Button.png[ImplementationClass_Button]:: Button for
 creating a job schedule with the implementation class declared in the text 
-fiel `JOB_IMPLEMENTATION_CLASS`.
+field `JOB_IMPLEMENTATION_CLASS`.
 
 `JOB_ID`:: Text field displaying the unique id of the selected job schedule.
 
@@ -612,7 +613,7 @@ fiel `JOB_IMPLEMENTATION_CLASS`.
 `DESCRIPTION`:: Text area displaying additional information with respect to the 
 selected job schedule.
 
-`TRIGGERS`:: A table showing all triggers assigned to the selected job. Triggers can be added, refreshed or removing using the accoding button next to the table. 
+`TRIGGERS`:: A table showing all triggers assigned to the selected job. Triggers can be added, refreshed or removing using the according button next to the table.
 The refresh button is provided to allow a manual update as triggers might be removed automatically after a single execution.
 
 `Extended Properties`:: Button for switching to the extended properties tab. Depending on the job there may or may not 

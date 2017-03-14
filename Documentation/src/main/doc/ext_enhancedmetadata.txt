@@ -38,12 +38,12 @@ Publish Extracted Metadata::
     systems simple. In other cases it is imaginable that the OID is stored as part of the metadata, if there is an appropriate field available, or the mapping has to be realized by 
     some custom service or tool.
     
-Summarizing, the concept of handling content metadata in KIT Data Manager offeres a lot of flexibility. The following chapter descibed how the default metadata extraction workflow based on METS documents 
+Summarizing, the concept of handling content metadata in KIT Data Manager offers a lot of flexibility. The following chapter described how the default metadata extraction workflow based on METS documents
 is realized and how it can be customized.
 
 [[ChapterEnhancedMetadataHandling]]
 === Metadata Extraction (METS)
-As decribed before, the basic content metadata workflow is divided into extraction and publishing. The metadata extraction process is accomplished by Staging Processors. 
+As described before, the basic content metadata workflow is divided into extraction and publishing. The metadata extraction process is accomplished by Staging Processors.
 For details about Staging Processors and their anatomy please refer to <<ChapterStagingProcessorCoding,this section>>. Compared to standard Staging Processors the ones responsible for
 metadata extraction extend 'MetsMetadataExtractor' instead of 'AbstractStagingProcessor'. 
 There are some additional configuration fields: 
@@ -273,7 +273,7 @@ In the publishing phase the previously configured scheduler for metadata indexin
 - Check the database for new metadata indexing task entries
 - Take the next unprocessed entry and read the associated XML files
 - Convert the XML file into a JSON structure
-- Publish the JSON structure to an Elasticsearch node running on localhost:9300 (default Elasticsearch settings) belonging to cluster and index stated in the paramters (default cluster is 'KITDataManager', default index 'dc').
+- Publish the JSON structure to an Elasticsearch node running on localhost:9300 (default Elasticsearch settings) belonging to cluster and index stated in the parameters (default cluster is 'KITDataManager', default index 'dc').
 - Update the indexing entry in the database to a success/error state
 
 Querying the Elasticsearch index can then be done using the Elasticseach APIs that can be found at https://www.elastic.co/. 
@@ -303,7 +303,7 @@ which is also ingested and available in an according Data Organization view afte
 - *metadata/mets_<OID>.xml* +
 - *metadata/oai_dc_<OID>.xml* +
 
-Access to these documents is now possible in the same way as accessing data, just by addressing the 'generated' view instead of the 'default' view. If the metadata should be made searchable, registerin the generated 
+Access to these documents is now possible in the same way as accessing data, just by addressing the 'generated' view instead of the 'default' view. If the metadata should be made searchable, registering the generated
 metadata in a search index is required. How to achieve this is described in the following chapter.  
 
 === Configuring Metadata Indexing

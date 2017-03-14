@@ -1,14 +1,14 @@
 Architecture Overview
 ---------------------
 In the following chapters basic components and concepts of KIT Data Manager's architecture are described briefly. Basically, the presented components are responsible for 
-abstracting from underlaying infrastructure and for providing a common service layer for integrating community-specific respository solutions.
+abstracting from underlying infrastructure and for providing a common service layer for integrating community-specific repository solutions.
 
 [[FigureArchitecture]]
 .Basic architecture of KIT Data Manager.
 image::Architecture.png[Architecture, width="600px", align="center"]
 
-The <<FigureArchitecture,figure above>> shows a quite general view on the differnt layers and services provided by KIT Data Manager. The following table gives a short impression 
-about the resposibilities of each service and in which chapter(s) the services are explained in detail.
+The <<FigureArchitecture,figure above>> shows a quite general view on the different layers and services provided by KIT Data Manager. The following table gives a short impression
+about the responsibilities of each service and in which chapter(s) the services are explained in detail.
 
 [cols="m,n,o", options="header"]
 |============================================================================================================================
@@ -56,7 +56,7 @@ resources or functionalities. Currently, there are the following roles available
 |MANAGER|An AuthorizationContext with the role `MANAGER` can be used for operations that require special access to resources and 
 functionalities on a group level, e.g. assign new memberships to a group.
 |CURATOR|The CURATOR role is intended to be used for curation tasks, e.g. updating metadata, data formats or removing entities. Currently, the CURATOR role 
-is not used explicitly and update can be performed by everybody posessing at least the role MEMBER. For future versions such operations will be reserved for
+is not used explicitly and update can be performed by everybody possessing at least the role MEMBER. For future versions such operations will be reserved for
 the CURATOR role in order to avoid uncontrolled modification of repository content.
 |ADMINISTRATOR|The role `ADMINISTRATOR` is used for operations that require special access on a global level. Typically, the 
 administrator role should be used sparingly and only for a small amount of administrator users.
@@ -89,7 +89,7 @@ The core of the metadata management of KIT Data Manager is the metadata model, w
 .Metadata model of KIT Data Manager. An important aspect of this model is covered by the Digital Object which provides the Digital Object ID (OID). This OID is used to refer to the according Digital Object by other linked entities, e.g. Staging or Data Organization Metadata.
 image::MetaData.png[Metadata model, width="500px", align="center"]
 
-The metadata model constists of three parts which can be described as follows:
+The metadata model consists of three parts which can be described as follows:
 
 Administrative Metadata::
    This category contains metadata elements that are mostly used internally by KIT Data Manager and its services. These elements have a fixed schema and are typically stored 
@@ -155,7 +155,7 @@ Archiving::
    to be safe. Local copies and cached data can be removed and repository workflows start taking care of the data.
 
 [NOTE]
-Authentification and authorization for data transfers to and from the cache is not covered by KIT Data Manager. This offers a huge level of flexibility and allows to customzie 
+Authentification and authorization for data transfers to and from the cache is not covered by KIT Data Manager. This offers a huge level of flexibility and allows to customize
 the data transfer to possible needs. However, it is still possible to use the same user database that is used to obtain KIT Data Manager UserIDs, e.g. an LDAP server. The only thing that
 has to be ensured is that for data ingests the written data has to be accessible by KIT Data Manager and for downloads the data, written by KIT Data Manager, must be readable by the user 
 who wants to access the data. Typically, this can be achieved by running KIT Data Manager as a privileged user or by handling access permission on a group level. 
@@ -182,7 +182,7 @@ As soon as the preparation of the data transfer operation is finished, the data 
 Both, cache and archive storage must be accessible by KIT Data Manager, at least one of them must be accessible (also) in a POSIX-like way. 
 
 [[Staging]]
-.Staging workflow for ingest operations with KIT Data Manager. After selecting the data (1) a Digital Object is registered (2) and a new ingest is scheduled. As soon as the transfer is prepared, the data can be transfered (3). Finally, the ingest is marked for finalization (4). During finalization the cached data is copied to the archive (5), the Data Organization is obtained and content metadata might be extracted automatically. Finally, extracted content metadata is made accessible e.g. by a search index (6).
+.Staging workflow for ingest operations with KIT Data Manager. After selecting the data (1) a Digital Object is registered (2) and a new ingest is scheduled. As soon as the transfer is prepared, the data can be transferred (3). Finally, the ingest is marked for finalization (4). During finalization the cached data is copied to the archive (5), the Data Organization is obtained and content metadata might be extracted automatically. Finally, extracted content metadata is made accessible e.g. by a search index (6).
 image::Staging.png[Staging, width="600px", align="center"]
 
 [[ChapterDataOrganization]]
@@ -200,11 +200,11 @@ to one Digital Object or to transform a Digital Object's data into another forma
 image::DataOrganization.png[DataOrganization, width="400px", align="center"]
 
 Apart from the basic file-based use case it is also possible to provide a custom Data Organization tree during ingest. This allows to register Data Organization trees where single nodes may refer to data located elsewhere, e.g. in another repository or on a web server.
-For standard workflows, e.g. for ingest and dowload, this enhanced scenario implies some differences: 
+For standard workflows, e.g. for ingest and download, this enhanced scenario implies some differences:
 
 Ingest::
    Instead of ingesting a file tree, one or more JSON file(s) containing a defined structure is/are ingested. An according StagingProcessor implemented by the class `edu.kit.dama.staging.processor.impl.ReferenceTreeIngestProcessor` 
-   has to be configured properly in beforehand. This StagingProcessor will parse and register the Data Organization information provided by the JSON file(s). For more details please refern to the link:https://github.com/kit-data-manager/base/tree/master/Samples[Samples module]
+   has to be configured properly in beforehand. This StagingProcessor will parse and register the Data Organization information provided by the JSON file(s). For more details please refer to the link:https://github.com/kit-data-manager/base/tree/master/Samples[Samples module]
    where the example `CustomDataOrganizationIngest` shows how to ingest a custom Data Organization and describes what are requirements and rules.
 Download::
    For download there are also multiple options. The easiest way for supporting transparent access to remotely stored data is to refer to data openly accessible via HTTP. In that case, the LFNs available in the Data Organization nodes can be 
@@ -293,7 +293,7 @@ in a Zip archive with the following structure:
 <1> Contains the user application, e.g. libraries, binaries and static configuration files.
 <2> The execution wrapper script for setting up and calling the user application. 
 
-The actual user application may or may not be located in a directory called `app` but it is recommended to achieve a clean cut between data workflow and user application. The execution wrapper consistes of 
+The actual user application may or may not be located in a directory called `app` but it is recommended to achieve a clean cut between data workflow and user application. The execution wrapper consists of
 two parts: a common part that is recommended for all wrapper scripts and a specific part for setting up and calling the actual user application. The base script looks as follows:
 
 [source,sh]
@@ -369,7 +369,7 @@ execution won't finish until the phase is either in its SUCCESSFUL or FAILED sta
 .Task state transitions of data workflow tasks.
 image::TaskStatus.png[TaskStatus]
 
-Summarizing, the Data Workflow Service offer a great potential for processing Digital Objects in an automated way including the tracking of provenance information for better reproducability. For more details
+Summarizing, the Data Workflow Service offer a great potential for processing Digital Objects in an automated way including the tracking of provenance information for better reproducibility. For more details
 on how to setup execution environments, workflow tasks and triggering them, please refer to the chapters <<ChapterInstallation,Installation>> of KIT Data Manager and <<ChapterSettings,Settings>> 
 of the Administration UI.
 
@@ -377,7 +377,7 @@ of the Administration UI.
 Audit
 ~~~~~
 The Audit Service provides functionalities to capture audit information about changes of resources stored in the repository system. One example for using audit information is the documentation of the lifecycle of a Digital Object, 
-starting with the creation and ingestion of content, modification of metdata, the validation of content and/or metadata and the migration or replication. Finally, the audit information may also contain deaccession and deletion of the resource.
+starting with the creation and ingestion of content, modification of metadata, the validation of content and/or metadata and the migration or replication. Finally, the audit information may also contain deaccession and deletion of the resource.
 
 In KIT Data Manager there are two ways how audit events are triggered: internally and externally. Internal audit events are statically integrated into KIT Data Manager workflows in order to ensure that they are triggered as soon as they occur,
 e.g. the successful creation of a Digital Object via REST endpoint. For performance reasons internal events are only triggered in REST endpoints. If a Digital Object is created directly using the MetadataManagement Java API, an according
