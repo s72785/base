@@ -38,7 +38,7 @@ Publish Extracted Metadata::
     systems simple. In other cases it is imaginable that the OID is stored as part of the metadata, if there is an appropriate field available, or the mapping has to be realized by 
     some custom service or tool.
     
-Summarizing, the concept of handling content metadata in KIT Data Manager offers a lot of flexibility. The following chapter described how the default metadata extraction workflow based on METS documents
+Summarizing, the concept of handling content metadata in KIT Data Manager offers a lot of flexibility. The following chapter described how the default metadata extraction workflow based on link:http://www.loc.gov/standards/mets/mets-home.html[METS] documents
 is realized and how it can be customized.
 
 [[ChapterEnhancedMetadataHandling]]
@@ -51,7 +51,7 @@ There are some additional configuration fields:
 CommunityMetadataDmdId::
     Id of the descriptive metadata section of the mets document containing the community metadata. This id should be defined in the mets profile of the according community.
 CommunityMDType::
-    Id of an endorsed metadata type defined by the mets standard. Possible types are: [MARC, MODS, EAD, DC, NISOIMG, LC-AV, VRA, TEIHDR, DDI, FGDC, LOM, PREMIS, PREMIS:OBJECT,
+    Id of an endorsed metadata type defined by the link:http://www.loc.gov/standards/mets/METSOverview.v2.html#descMD[METS/Descriptive Metadata]. Possible types are: [MARC, MODS, EAD, DC, NISOIMG, LC-AV, VRA, TEIHDR, DDI, FGDC, LOM, PREMIS, PREMIS:OBJECT,
     PREMIS:AGENT, PREMIS:RIGHTS, PREMIS:EVENT, TEXTMD, METSRIGHTS, ISO 19115-2003 NAP, EAC-CPF, LIDO, OTHER]. If no MDType is defined, an external metadata schema identified 
     via the property 'communityMetadataSchemaId' might be used instead.
 CommunityMetadataSchemaId::
