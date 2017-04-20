@@ -142,7 +142,7 @@ public final class StagingProcessorBasePropertiesLayout extends AbstractBaseProp
             downloadSupportedBox = new CheckBox("Download Supported");
             downloadSupportedBox.setId(DEBUG_ID_PREFIX + id);
             downloadSupportedBox.addStyleName("yesno");
-            ingestSupportedBox.setDescription("Set this processor to be applicable to downloads.");
+            downloadSupportedBox.setDescription("Set this processor to be applicable to downloads.");
             downloadSupportedBox.addStyleName(CSSTokenContainer.BOLD_CAPTION);
         }
         return downloadSupportedBox;
