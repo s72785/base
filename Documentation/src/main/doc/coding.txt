@@ -253,7 +253,7 @@ processor was executed without errors. In our example, no special cleanup is nee
       //This folder can be obtained from the TransferTaskContainer: 
       File processorOutput = new File(pContainer.getGeneratedUrl().toURI(), "myProcessor.log");
       //Create an output stream and write some dummy data.
-      FileOutputStream fout = new FileOutputStream(processorOutput)
+      FileOutputStream fout = new FileOutputStream(processorOutput);
       fout.write(("Processor '" + getName() + "' was successfully executed.\n").getBytes());
       fout.write(("Custom metadata was successfully detected in file " + metadataFilenameMember).getBytes());
       fout.flush();
