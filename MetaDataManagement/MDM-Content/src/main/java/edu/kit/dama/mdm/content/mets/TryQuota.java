@@ -323,9 +323,9 @@ private static boolean isLink( File f ) {
         // simplified null-comparison might be error prone
         // TODO: maybe extend Number.class for isLowerThan(),isHigherThan()
         String Msg = "no aparent reason";
-        if ( !preProcessingResult ) {
-            preProcessingResult = (IngestFileSize != 0L)
-                    && (QuotaMaxFileSize != 0L)
+        if (preProcessingResult) {
+            preProcessingResult = (IngestFileSize > 0L)
+                    && (QuotaMaxFileSize >= 0L)
                     && (IngestFileSize <= QuotaMaxFileSize);
             if (!preProcessingResult) {
                 Msg = "Quota Limit: maximum filesize (" + getHumanreadableSize(QuotaMaxFileSize) + ") exceeded: " + getHumanreadableSize(IngestFileSize) + "; Files " + getHumanreadableSize(IngestFileSize - QuotaMaxFileSize) + " too big.";
@@ -333,7 +333,7 @@ private static boolean isLink( File f ) {
         }
         if (preProcessingResult) {
             preProcessingResult = (IngestFileSize > 0L)
-                    && (QuotaMinFileSize > 0L)
+                    && (QuotaMinFileSize >= 0L)
                     && (IngestFileSize >= QuotaMinFileSize);
             if (!preProcessingResult) {
                 Msg = "Quota Limit: minimum filesize (" + getHumanreadableSize(QuotaMaxFileSize) + ") exceeded: " + getHumanreadableSize(IngestFileSize) + "; Files " + getHumanreadableSize(QuotaMinFileSize - IngestFileSize) + " too small.";
